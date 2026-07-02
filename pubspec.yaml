@@ -1,0 +1,19 @@
+name: prayer_time_plus
+description: >-
+  Offline Islamic prayer times (Fajr to Isha), Qibla direction, and Sunnah
+  times with 50+ regional calculation methods and zero runtime dependencies.
+version: 0.1.0
+repository: https://github.com/abdulwahed-s/prayer_time_plus
+topics:
+  - islam
+  - prayer-times
+  - salah
+  - adhan
+  - qibla
+
+environment:
+  sdk: ^3.5.0
+
+dev_dependencies:
+  lints: ^5.1.1
+  test: ^1.25.8
