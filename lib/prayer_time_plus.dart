@@ -15,3 +15,5 @@ export 'src/models/madhab.dart';
 export 'src/models/prayer.dart';
 export 'src/models/prayer_adjustments.dart';
 export 'src/prayer_times.dart';
+export 'src/qibla.dart';
+export 'src/sunnah_times.dart';
