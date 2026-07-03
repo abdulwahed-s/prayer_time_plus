@@ -13,3 +13,4 @@ export 'src/models/high_latitude_rule.dart';
 export 'src/models/madhab.dart';
 export 'src/models/prayer.dart';
 export 'src/models/prayer_adjustments.dart';
+export 'src/prayer_times.dart';
