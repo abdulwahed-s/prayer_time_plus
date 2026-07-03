@@ -11,7 +11,6 @@
 //   [4] Isha parameter (degrees when [3] == 0, minutes when [3] == 1).
 //   [5..10] Baked-in minute offsets: Fajr, Sunrise, Dhuhr, Asr, Maghrib
 //       (relative to sunset), Isha.
-//
 
 /// Parameter arrays keyed by method key.
 const Map<String, List<double>> methodParams = {
