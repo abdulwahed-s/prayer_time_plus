@@ -5,6 +5,8 @@
 /// with 50+ regional calculation methods and zero runtime dependencies.
 library;
 
+export 'src/methods/calculation_method.dart';
+export 'src/methods/calculation_parameters.dart';
 export 'src/models/coordinates.dart';
 export 'src/models/date_components.dart';
 export 'src/models/high_latitude_rule.dart';
