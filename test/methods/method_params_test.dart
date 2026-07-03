@@ -10,7 +10,6 @@ void main() {
       }
     });
 
-
     test('spot-checks exact literals', () {
       expect(methodParams['mwl'], [18.0, 1, 0, 0, 17.0, 0, 0, 0, 0, 0, 0]);
       expect(methodParams['makkah'], [18.5, 1, 0, 1, 90.0, 0, 0, 0, 0, 0, 0]);
