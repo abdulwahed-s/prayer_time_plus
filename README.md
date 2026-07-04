@@ -1,7 +1,7 @@
 # prayer_time_plus
 
-Islamic prayer times, Qibla direction, and Sunnah times for Dart and Flutter —
-computed offline from solar geometry, with **zero runtime dependencies**.
+Islamic prayer times and Sunnah times for Dart and Flutter — computed offline
+from solar geometry, with **zero runtime dependencies**.
 
 Give it a location, a date, and a UTC offset, and it returns the five daily
 prayer times (plus Sunrise and Sunset). It ships 50+ calculation methods used
@@ -10,7 +10,7 @@ by authorities worldwide and can pick one automatically from a country code.
 - Pure Dart: runs on Dart Native, Flutter, and Web. No assets, no network.
 - Fajr, Sunrise, Dhuhr, Asr, Maghrib, Isha, and Sunset.
 - Shafi and Hanafi Asr, four high-latitude rules, per-prayer minute tuning.
-- Qibla bearing, Sunnah night portions, and current/next prayer helpers.
+- Sunnah night portions and current/next prayer helpers.
 
 ## Install
 
@@ -162,14 +162,12 @@ times.timeForPrayer(Prayer.asr);
 
 Both take an optional instant and default to now.
 
-## Sunnah times and Qibla
+## Sunnah times
 
 ```dart
 final sunnah = SunnahTimes(times);
 print(sunnah.middleOfTheNight);
 print(sunnah.lastThirdOfTheNight);
-
-final qibla = Qibla(coordinates).direction; // degrees clockwise from true north
 ```
 
 ## Command line
@@ -178,8 +176,7 @@ final qibla = Qibla(coordinates).direction; // degrees clockwise from true north
 dart run prayer_time_plus
 ```
 
-Prints today's times, the current/next prayer, and the Qibla for a sample
-location.
+Prints today's times and the current/next prayer for a sample location.
 
 ## License
 

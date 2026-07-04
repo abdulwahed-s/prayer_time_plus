@@ -1,4 +1,4 @@
-/// Offline Islamic prayer times, Qibla direction, and Sunnah times.
+/// Offline Islamic prayer times and Sunnah times.
 ///
 /// Computes the six daily prayer times (Fajr, Sunrise, Dhuhr, Asr, Maghrib,
 /// Isha) plus Sunset from coordinates, a date, and calculation parameters,
@@ -15,5 +15,4 @@ export 'src/models/madhab.dart';
 export 'src/models/prayer.dart';
 export 'src/models/prayer_adjustments.dart';
 export 'src/prayer_times.dart';
-export 'src/qibla.dart';
 export 'src/sunnah_times.dart';

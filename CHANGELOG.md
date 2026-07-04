@@ -14,7 +14,7 @@ Initial release.
   madhab, high-latitude rule).
 - `Madhab` (Shafi/Hanafi) Asr and per-prayer minute tuning.
 - `AutoMethod.forCountry` for ISO country-based method resolution.
-- `Qibla` great-circle bearing and `SunnahTimes` night portions.
+- `SunnahTimes` night portions.
 - Umm al-Qura Ramadan Isha rule.
 - Command-line demo (`dart run prayer_time_plus`) and a runnable example.
 - Pure Dart, zero runtime dependencies.

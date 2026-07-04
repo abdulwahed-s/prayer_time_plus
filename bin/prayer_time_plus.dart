@@ -30,10 +30,7 @@ void main() {
         ..writeln('  Isha     ${_time(times.isha)}')
         ..writeln()
         ..writeln('  Current  ${times.currentPrayer().name}')
-        ..writeln('  Next     ${times.nextPrayer().name}')
-        ..writeln(
-          '  Qibla    ${Qibla(coordinates).direction.toStringAsFixed(1)}° from N',
-        );
+        ..writeln('  Next     ${times.nextPrayer().name}');
   stdout.write(output.toString());
 }
 

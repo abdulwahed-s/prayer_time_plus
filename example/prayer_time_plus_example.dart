@@ -40,10 +40,9 @@ void main() {
   final autoMethod = AutoMethod.forCountry('OM');
   print('Auto method for OM: ${autoMethod.key}');
 
-  // Sunnah times for the night, and the Qibla direction.
+  // Sunnah times for the night.
   final sunnah = SunnahTimes(times);
   print('Last third of the night: ${hhmm(sunnah.lastThirdOfTheNight)}');
-  print('Qibla: ${Qibla(coordinates).direction.toStringAsFixed(1)}°');
 
   // Current and next prayer relative to a given instant (1 pm local here,
   // expressed as its UTC instant).
