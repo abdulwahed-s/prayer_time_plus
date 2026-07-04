@@ -1,0 +1,19 @@
+# A .pubignore replaces this directory's .gitignore when publishing, and pub
+# does not consult .git/info/exclude — so anything that must stay out of the
+# published archive has to be listed here explicitly.
+
+# Build artifacts and caches (normally hidden by .gitignore).
+.dart_tool/
+build/
+pubspec.lock
+
+# Development-only files (hidden from git via .git/info/exclude, which pub
+# ignores, so they must be excluded here too).
+CLAUDE.md
+prayer-time-package-agent-prompt.md
+docs_dev/
+IMPLEMENTATION_NOTES.md
+
+# Data generator and its source JSON: the generated Dart under lib/ is what
+# ships, so consumers do not need the generator.
+tool/
