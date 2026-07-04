@@ -1,0 +1,8 @@
+# Dart tooling artifacts.
+.dart_tool/
+build/
+coverage/
+doc/api/
+
+# Library packages do not commit the lockfile.
+pubspec.lock
