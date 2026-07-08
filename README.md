@@ -1,7 +1,16 @@
 # prayer_time_plus
 
+[![pub package](https://img.shields.io/pub/v/prayer_time_plus.svg)](https://pub.dev/packages/prayer_time_plus)
+[![pub points](https://img.shields.io/pub/points/prayer_time_plus)](https://pub.dev/packages/prayer_time_plus/score)
+[![License: MIT](https://img.shields.io/badge/License-MIT-blue.svg)](LICENSE)
+
 Islamic prayer times and Sunnah times for Dart and Flutter — computed offline
 from solar geometry, with **zero runtime dependencies**.
+
+> **Also available for [Swift](https://github.com/abdulwahed-s/prayer-time-plus-swift)
+> and [Kotlin / JVM](https://github.com/abdulwahed-s/prayer-time-plus-kotlin).** All three
+> are faithful ports of the same solar engine and compute identical times to the minute.
+> See [Other platforms](#other-platforms).
 
 Give it a location, a date, and a UTC offset, and it returns the five daily
 prayer times (plus Sunrise and Sunset). It ships 50+ calculation methods used
@@ -177,6 +186,17 @@ dart run prayer_time_plus
 ```
 
 Prints today's times and the current/next prayer for a sample location.
+
+## Other platforms
+
+The same solar engine, ported idiomatically to three ecosystems — identical
+results to the minute:
+
+| Platform | Package | Repository |
+|---|---|---|
+| **Dart / Flutter** — you are here | [`prayer_time_plus`](https://pub.dev/packages/prayer_time_plus) | [prayer_time_plus](https://github.com/abdulwahed-s/prayer_time_plus) |
+| Swift · iOS, macOS, watchOS, tvOS, Linux | [Swift Package Index](https://swiftpackageindex.com/abdulwahed-s/prayer-time-plus-swift) | [prayer-time-plus-swift](https://github.com/abdulwahed-s/prayer-time-plus-swift) |
+| Kotlin / JVM | [`io.github.abdulwahed-s:prayer-time-plus`](https://central.sonatype.com/artifact/io.github.abdulwahed-s/prayer-time-plus) | [prayer-time-plus-kotlin](https://github.com/abdulwahed-s/prayer-time-plus-kotlin) |
 
 ## License
 
