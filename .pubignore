@@ -17,3 +17,7 @@ IMPLEMENTATION_NOTES.md
 # Data generator and its source JSON: the generated Dart under lib/ is what
 # ships, so consumers do not need the generator.
 tool/
+
+# GitHub repository meta (contributing guide, security policy, issue and PR
+# templates) — relevant to the repo, not to the published package.
+.github/
