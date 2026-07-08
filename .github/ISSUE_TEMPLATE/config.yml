@@ -1,0 +1,8 @@
+blank_issues_enabled: false
+contact_links:
+  - name: Report a security vulnerability
+    url: https://github.com/abdulwahed-s/prayer_time_plus/security/advisories/new
+    about: Report vulnerabilities privately via a security advisory — never a public issue.
+  - name: Other ports (Swift & Kotlin)
+    url: https://github.com/abdulwahed-s/prayer-time-plus-swift
+    about: Using another language? The same engine ships for Swift and Kotlin / JVM.
