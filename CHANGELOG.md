@@ -1,5 +1,15 @@
 # Changelog
 
+## 0.2.0
+
+- Added `HighLatitudeRule.automatic` as the explicit default high-latitude
+  behavior.
+- Changed `CalculationParameters.highLatitudeRule` to default to
+  `HighLatitudeRule.automatic` instead of relying on `null`.
+- Kept `HighLatitudeRule.none` as the explicit unadjusted mode where Fajr and
+  Isha may remain `null`.
+- Documented the updated high-latitude rule options.
+
 ## 0.1.0
 
 Initial release.

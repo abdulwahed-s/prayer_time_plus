@@ -25,7 +25,7 @@ by authorities worldwide and can pick one automatically from a country code.
 
 ```yaml
 dependencies:
-  prayer_time_plus: ^0.1.0
+  prayer_time_plus: ^0.2.0
 ```
 
 ```dart
@@ -145,10 +145,11 @@ final params = CalculationMethod.muslimWorldLeague.getParameters()
 
 - **`madhab`** — `Madhab.shafi` (shadow factor 1, the standard for Shafi'i,
   Maliki, and Hanbali) or `Madhab.hanafi` (factor 2).
-- **`highLatitudeRule`** — `none`, `middleOfTheNight`, `seventhOfTheNight`, or
-  `twilightAngle`, for places where the sun may not reach the twilight angle.
-  Left unset, no adjustment is applied but the day is recomputed with
-  `seventhOfTheNight` if Fajr or Isha come out degenerate.
+- **`highLatitudeRule`** — `automatic`, `none`, `middleOfTheNight`,
+  `seventhOfTheNight`, or `twilightAngle`, for places where the sun may not
+  reach the twilight angle. `automatic` first tries unadjusted angle-based
+  times, then recomputes with `seventhOfTheNight` if Fajr or Isha come out
+  degenerate. Use `none` to never apply a fallback.
 - **`adjustments`** — your per-prayer minute offsets, applied on top of the
   method's own.
 

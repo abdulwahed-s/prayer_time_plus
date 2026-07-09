@@ -3,6 +3,13 @@ import 'package:test/test.dart';
 
 void main() {
   group('HighLatitudeRule.nightPortion', () {
+    test('automatic reports the seventh-of-night fallback portion', () {
+      expect(
+        HighLatitudeRule.automatic.nightPortion(18),
+        HighLatitudeRule.seventhOfTheNight.nightPortion(18),
+      );
+    });
+
     test('none allows no night fraction', () {
       expect(HighLatitudeRule.none.nightPortion(18), 0.0);
     });

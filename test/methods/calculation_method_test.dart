@@ -100,7 +100,7 @@ void main() {
       expect(params.maghribValue, 0);
       expect(params.ishaIsInterval, isFalse);
       expect(params.madhab, Madhab.shafi);
-      expect(params.highLatitudeRule, isNull);
+      expect(params.highLatitudeRule, HighLatitudeRule.automatic);
       expect(params.isRamadan, isFalse);
     });
   });

@@ -36,7 +36,7 @@ class CalculationParameters {
     PrayerAdjustments? methodAdjustments,
     PrayerAdjustments? adjustments,
     this.madhab = Madhab.shafi,
-    this.highLatitudeRule,
+    this.highLatitudeRule = HighLatitudeRule.automatic,
     this.isRamadan = false,
   }) : methodAdjustments = methodAdjustments ?? PrayerAdjustments(),
        adjustments = adjustments ?? PrayerAdjustments();
@@ -80,10 +80,12 @@ class CalculationParameters {
 
   /// High-latitude fallback rule.
   ///
-  /// `null` means automatic: no adjustment is applied, but if Fajr or Isha
-  /// degenerate (undefined, or landing on a midnight/noon artefact) the
-  /// whole day is recomputed with [HighLatitudeRule.seventhOfTheNight].
-  HighLatitudeRule? highLatitudeRule;
+  /// [HighLatitudeRule.automatic] means no adjustment is applied first, but
+  /// if Fajr or Isha degenerate (undefined, or landing on a midnight/noon
+  /// artefact) the whole day is recomputed with
+  /// [HighLatitudeRule.seventhOfTheNight]. Use [HighLatitudeRule.none] to
+  /// never apply a fallback.
+  HighLatitudeRule highLatitudeRule;
 
   /// Whether the date being computed falls in Ramadan.
   ///
@@ -95,8 +97,7 @@ class CalculationParameters {
   /// Returns a copy with the given fields replaced.
   ///
   /// The adjustment objects are deep-copied, so mutating the copy never
-  /// affects the original. [highLatitudeRule] cannot be reset to `null`
-  /// (automatic) through this method; assign the field directly instead.
+  /// affects the original.
   CalculationParameters copyWith({
     String? method,
     double? fajrAngle,

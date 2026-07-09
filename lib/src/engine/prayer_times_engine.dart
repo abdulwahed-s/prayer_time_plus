@@ -20,9 +20,10 @@ typedef RawMinuteTimes = List<int?>;
 ///
 /// [countryCode] and [cityName] drive the elevation term, the Ramadan
 /// rule, and the per-city tweaks; both may be empty. When
-/// [CalculationParameters.highLatitudeRule] is `null`, the day is computed
-/// with no high-latitude adjustment and recomputed once with
-/// [HighLatitudeRule.seventhOfTheNight] if Fajr or Isha come out degenerate.
+/// [CalculationParameters.highLatitudeRule] is
+/// [HighLatitudeRule.automatic], the day is computed with no high-latitude
+/// adjustment and recomputed once with [HighLatitudeRule.seventhOfTheNight]
+/// if Fajr or Isha come out degenerate.
 RawMinuteTimes runEngine({
   required Coordinates coordinates,
   required DateComponents date,
@@ -36,6 +37,18 @@ RawMinuteTimes runEngine({
       coordinates.longitude / 360.0;
 
   final rule = params.highLatitudeRule;
+  if (rule != HighLatitudeRule.automatic) {
+    return _computePass(
+      baseJd: baseJd,
+      coordinates: coordinates,
+      params: params,
+      utcOffsetHours: utcOffsetHours,
+      countryCode: countryCode,
+      cityName: cityName,
+      rule: rule,
+    );
+  }
+
   final firstPass = _computePass(
     baseJd: baseJd,
     coordinates: coordinates,
@@ -43,10 +56,10 @@ RawMinuteTimes runEngine({
     utcOffsetHours: utcOffsetHours,
     countryCode: countryCode,
     cityName: cityName,
-    rule: rule ?? HighLatitudeRule.none,
+    rule: HighLatitudeRule.none,
   );
 
-  if (rule != null || !_looksBroken(firstPass)) {
+  if (!_looksBroken(firstPass)) {
     return firstPass;
   }
   return _computePass(

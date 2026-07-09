@@ -5,6 +5,10 @@
 /// sunrise/Maghrib than the allowed fraction of the night, Fajr and Isha are
 /// recomputed from that night fraction instead.
 enum HighLatitudeRule {
+  /// Try unadjusted angle-based times first, then retry with
+  /// [seventhOfTheNight] if Fajr or Isha come out degenerate.
+  automatic,
+
   /// No adjustment: undefined times are reported as `null`.
   none,
 
@@ -21,7 +25,11 @@ enum HighLatitudeRule {
 
   /// Fraction of the night allowed for a prayer with twilight [angle]
   /// degrees.
+  ///
+  /// [automatic] reports the fraction used by its retry fallback; the
+  /// calculation engine still handles it with an initial unadjusted pass.
   double nightPortion(double angle) => switch (this) {
+    automatic => seventhOfTheNight.nightPortion(angle),
     none => 0.0,
     middleOfTheNight => 0.5,
     // The literal 0.14286 (not 1/7) is required for parity with the

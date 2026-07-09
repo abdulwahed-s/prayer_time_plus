@@ -9,7 +9,7 @@ void main() {
   const date = DateComponents(2026, 6, 21);
   const utcOffset = Duration(hours: 2);
 
-  CalculationParameters mwlWith(HighLatitudeRule? rule) =>
+  CalculationParameters mwlWith(HighLatitudeRule rule) =>
       CalculationMethod.muslimWorldLeague.getParameters()
         ..highLatitudeRule = rule;
 
@@ -65,8 +65,13 @@ void main() {
     expect(mid.fajr!.isBefore(seventh.fajr!), isTrue);
   });
 
-  test('automatic rule (null) recovers from a degenerate day', () {
-    final auto = PrayerTimes(oslo, date, mwlWith(null), utcOffset: utcOffset);
+  test('automatic rule recovers from a degenerate day', () {
+    final auto = PrayerTimes(
+      oslo,
+      date,
+      mwlWith(HighLatitudeRule.automatic),
+      utcOffset: utcOffset,
+    );
     expect(auto.fajr, isNotNull);
     expect(auto.isha, isNotNull);
   });
