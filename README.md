@@ -25,7 +25,7 @@ by authorities worldwide and can pick one automatically from a country code.
 
 ```yaml
 dependencies:
-  prayer_time_plus: ^0.2.0
+  prayer_time_plus: ^0.3.0
 ```
 
 ```dart

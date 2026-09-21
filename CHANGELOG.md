@@ -2,6 +2,8 @@
 
 ## Unreleased
 
+## 0.3.0
+
 - Added working angle-based Maghrib support: in non-interval mode, a positive
   `maghribValue` is an evening solar-depression angle, with a safe Sunset
   fallback when the event is unavailable or non-chronological.
@@ -9,6 +11,10 @@
   angle-based Maghrib.
 - Documented the shared `custom` preset contract (Fajr 18°, Maghrib at Sunset,
   Isha 17°) used by the Dart, Kotlin, and Swift packages.
+- Fixed automatic national method resolution so Iraq (`IQ`) selects `iraq`
+  instead of `egypt`, and Austria (`AT`) selects `austria` instead of `tunisia`.
+- Removed the unused continent fallback from the generated resolution model;
+  country misses now fall back directly to Muslim World League as documented.
 
 ## 0.2.0
 
