@@ -60,17 +60,19 @@ For the given date the engine computes the **Julian day**, then the sun's
 - **Dhuhr** — solar noon, when the sun crosses the meridian.
 - **Sunrise** and **Sunset** — when the sun sits on the horizon (with a small
   refraction allowance, and an optional altitude correction).
-- **Fajr** and **Isha** — when the sun is a certain angle *below* the horizon
-  before dawn and after dusk. Each calculation method defines those twilight
-  angles (or, for some authorities, a fixed number of minutes).
+- **Fajr**, angle-based **Maghrib**, and **Isha** — when the sun is a certain
+  angle *below* the horizon before dawn or after dusk. Each calculation method
+  defines those twilight angles (or, for some authorities, a fixed number of
+  minutes).
 - **Asr** — when an object's shadow reaches a set multiple of its length; the
   multiple is 1 for the standard madhab and 2 for Hanafi.
 
-**Maghrib** is taken from Sunset, and **Isha** is either its twilight angle or
-a fixed interval after Maghrib. Each method also carries small per-prayer
-minute offsets published by its authority. Finally the times are shifted to
-the local clock using your UTC offset, adjusted at high latitudes where
-twilight may not occur, and rounded to the nearest minute.
+**Maghrib** is Sunset by default, or it can use an evening depression angle or
+a fixed interval after Sunset. **Isha** is either its twilight angle or a fixed
+interval after the final Maghrib. Each method also carries small per-prayer
+minute offsets published by its authority. Finally the times are shifted to the
+local clock using your UTC offset, adjusted at high latitudes where twilight
+may not occur, and rounded to the nearest minute.
 
 ## Reading the results
 
@@ -142,6 +144,23 @@ final params = CalculationMethod.muslimWorldLeague.getParameters()
   ..adjustments.fajr = 2                                // your own minute tuning
   ..adjustments.isha = -3;
 ```
+
+For a fully custom Fajr, Maghrib, and Isha angle set:
+
+```dart
+final params = CalculationMethod.other.getParameters()
+  ..fajrAngle = 18
+  ..maghribIsInterval = false
+  ..maghribValue = 4                    // evening depression angle
+  ..ishaIsInterval = false
+  ..ishaValue = 17;
+```
+
+In non-interval Maghrib mode, zero or a negative `maghribValue` keeps Maghrib
+at Sunset. If the requested angle is unavailable or would not fall between
+Sunset and an available angle-based Isha, the engine safely uses Sunset. In
+interval mode, `maghribValue` remains minutes after Sunset. Interval Isha is
+always measured from the final Maghrib time.
 
 - **`madhab`** — `Madhab.shafi` (shadow factor 1, the standard for Shafi'i,
   Maliki, and Hanbali) or `Madhab.hanafi` (factor 2).

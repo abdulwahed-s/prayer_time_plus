@@ -1,5 +1,15 @@
 # Changelog
 
+## Unreleased
+
+- Added working angle-based Maghrib support: in non-interval mode, a positive
+  `maghribValue` is an evening solar-depression angle, with a safe Sunset
+  fallback when the event is unavailable or non-chronological.
+- Interval Isha is now explicitly based on the final Maghrib time, including an
+  angle-based Maghrib.
+- Documented the shared `custom` preset contract (Fajr 18°, Maghrib at Sunset,
+  Isha 17°) used by the Dart, Kotlin, and Swift packages.
+
 ## 0.2.0
 
 - Added `HighLatitudeRule.automatic` as the explicit default high-latitude

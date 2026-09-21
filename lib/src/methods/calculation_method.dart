@@ -4,8 +4,8 @@ import 'method_params.dart';
 
 /// Preset calculation methods.
 ///
-/// Each preset carries a Fajr angle, an Isha angle or interval, an optional
-/// Maghrib interval, and per-prayer minute offsets. Call [getParameters] to
+/// Each preset carries a Fajr angle, a Maghrib angle/interval/sunset rule, an
+/// Isha angle or interval, and per-prayer minute offsets. Call [getParameters] to
 /// obtain a fresh, customisable [CalculationParameters]:
 ///
 /// ```dart
@@ -216,8 +216,8 @@ enum CalculationMethod {
 
   // ── Custom ────────────────────────────────────────────────────────
 
-  /// A blank starting point (Muslim World League values: Fajr 18°,
-  /// Isha 17°) intended to be customised.
+  /// The Custom starting point: Fajr 18°, Maghrib at sunset, and Isha 17°.
+  /// Its stable engine key is `custom`.
   other('custom');
 
   const CalculationMethod(this.key);

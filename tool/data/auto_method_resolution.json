@@ -1,20 +1,10 @@
 {
-  "_doc": "Good-enough Auto calc-method resolution. Order: cities.calc_method (per-city, omitted here) -> country -> continent -> mwl. Source: bundled SQLite countries table (authoritative) + f6.d continent map (code).",
+  "_doc": "Country-level Auto calc-method resolution. Order: country -> mwl. Source: bundled SQLite countries table, corrected where a supported national preset must supersede a city-dependent database fallback. Per-city cities.calc_method overrides are intentionally omitted.",
   "resolution_order": [
     "country",
-    "continent",
     "mwl_default"
   ],
   "mwl_default": "mwl",
-  "continent": {
-    "AF": "egypt",
-    "AS": "mwl",
-    "EU": "mwl",
-    "NA": "isna",
-    "OC": "mwl",
-    "SA": "isna",
-    "AN": "isna"
-  },
   "country": {
     "AD": "mwl",
     "AE": "emirates",
@@ -28,7 +18,7 @@
     "AQ": "isna",
     "AR": "isna",
     "AS": "mwl",
-    "AT": "mwl",
+    "AT": "austria",
     "AU": "mwl",
     "AW": "isna",
     "AX": "mwl",
@@ -123,7 +113,7 @@
     "IM": "mwl",
     "IN": "karachi",
     "IO": "isna",
-    "IQ": "egypt",
+    "IQ": "iraq",
     "IR": "mwl",
     "IS": "mwl",
     "IT": "mwl",

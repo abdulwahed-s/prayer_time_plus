@@ -8,10 +8,16 @@
 /// effective per-prayer offset (method offsets already combined with user
 /// tuning) in order [Fajr, Sunrise, Dhuhr, Asr, Maghrib, Isha].
 ///
-/// Maghrib is always rebuilt from Sunset. Isha keeps its angle-based value
-/// unless [ishaIsInterval] is set, in which case it becomes Maghrib plus
-/// [ishaValue] minutes; either way the Isha offset is added last. When
-/// [applyRamadanIshaBump] is true, Isha is pushed 30 minutes later.
+/// Interval Maghrib is rebuilt from Sunset. A positive non-interval
+/// [maghribValue] keeps the provisional angle-based time when it is finite,
+/// after Sunset, and before an available angle-based Isha; otherwise Maghrib
+/// falls back to Sunset. The Maghrib offset is applied to either base exactly
+/// once.
+///
+/// Isha keeps its angle-based value unless [ishaIsInterval] is set, in which
+/// case it becomes the final Maghrib plus [ishaValue] minutes; either way the
+/// Isha offset is added last. When [applyRamadanIshaBump] is true, Isha is
+/// pushed 30 minutes later.
 void adjustTimes(
   List<double> times, {
   required double utcOffsetHours,
@@ -35,17 +41,31 @@ void adjustTimes(
   times[2] += offsetMinutes[2] / 60.0;
   times[3] += offsetMinutes[3] / 60.0;
 
-  // (e) Maghrib is always sunset plus its offset (plus the interval).
-  times[5] = times[4] + offsetMinutes[4] / 60.0;
+  // (e) Resolve the final Maghrib base, then apply its offset exactly once.
+  final maghribOffset = offsetMinutes[4] / 60.0;
+  final sunsetBasedMaghrib = times[4] + maghribOffset;
+  final angleBasedIsha = times[6] + offsetMinutes[5] / 60.0;
   if (maghribIsInterval) {
-    times[5] += maghribValue / 60.0;
+    times[5] = sunsetBasedMaghrib + maghribValue / 60.0;
+  } else if (maghribValue > 0) {
+    final candidate = times[5] + maghribOffset;
+    final isChronological =
+        candidate.isFinite &&
+        candidate > times[4] &&
+        (ishaIsInterval ||
+            !angleBasedIsha.isFinite ||
+            candidate < angleBasedIsha);
+    times[5] = isChronological ? candidate : sunsetBasedMaghrib;
+  } else {
+    times[5] = sunsetBasedMaghrib;
   }
 
-  // (f) Isha: interval from Maghrib, or the angle-based value, then offset.
-  if (ishaIsInterval) {
-    times[6] = times[5] + ishaValue / 60.0;
-  }
-  times[6] += offsetMinutes[5] / 60.0;
+  // (f) Interval Isha is based on the final Maghrib. Angle Isha already has
+  // its own offset folded in above for chronological validation.
+  times[6] =
+      ishaIsInterval
+          ? times[5] + ishaValue / 60.0 + offsetMinutes[5] / 60.0
+          : angleBasedIsha;
 
   // (g) Umm al-Qura Ramadan: Isha +30 minutes.
   if (applyRamadanIshaBump) {

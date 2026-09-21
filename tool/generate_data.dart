@@ -17,7 +17,6 @@ void main() {
 
   final data = jsonDecode(source.readAsStringSync()) as Map<String, dynamic>;
   final defaultMethod = data['mwl_default'] as String;
-  final continent = _stringMap(data['continent'] as Map<String, dynamic>);
   final country = _stringMap(data['country'] as Map<String, dynamic>);
 
   final buffer =
@@ -25,15 +24,8 @@ void main() {
         ..writeln('// GENERATED FILE — do not edit by hand.')
         ..writeln('// Regenerate with: dart run tool/generate_data.dart')
         ..writeln()
-        ..writeln(
-          '/// Fallback method key when no country or continent matches.',
-        )
+        ..writeln('/// Fallback method key when no country matches.')
         ..writeln("const String autoMethodDefault = '$defaultMethod';")
-        ..writeln()
-        ..writeln('/// Continent code (ISO-3166 continent) to method key.')
-        ..writeln('const Map<String, String> autoContinentMethods = {')
-        ..write(_entries(continent))
-        ..writeln('};')
         ..writeln()
         ..writeln('/// Country code (ISO-3166 alpha-2) to method key.')
         ..writeln('const Map<String, String> autoCountryMethods = {')
@@ -46,7 +38,7 @@ void main() {
         ..writeAsStringSync(buffer.toString());
   stdout.writeln(
     'Wrote ${output.path} '
-    '(${country.length} countries, ${continent.length} continents).',
+    '(${country.length} countries).',
   );
 }
 

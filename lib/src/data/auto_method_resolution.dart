@@ -1,19 +1,8 @@
 // GENERATED FILE — do not edit by hand.
 // Regenerate with: dart run tool/generate_data.dart
 
-/// Fallback method key when no country or continent matches.
+/// Fallback method key when no country matches.
 const String autoMethodDefault = 'mwl';
-
-/// Continent code (ISO-3166 continent) to method key.
-const Map<String, String> autoContinentMethods = {
-  'AF': 'egypt',
-  'AN': 'isna',
-  'AS': 'mwl',
-  'EU': 'mwl',
-  'NA': 'isna',
-  'OC': 'mwl',
-  'SA': 'isna',
-};
 
 /// Country code (ISO-3166 alpha-2) to method key.
 const Map<String, String> autoCountryMethods = {
@@ -29,7 +18,7 @@ const Map<String, String> autoCountryMethods = {
   'AQ': 'isna',
   'AR': 'isna',
   'AS': 'mwl',
-  'AT': 'mwl',
+  'AT': 'austria',
   'AU': 'mwl',
   'AW': 'isna',
   'AX': 'mwl',
@@ -124,7 +113,7 @@ const Map<String, String> autoCountryMethods = {
   'IM': 'mwl',
   'IN': 'karachi',
   'IO': 'isna',
-  'IQ': 'egypt',
+  'IQ': 'iraq',
   'IR': 'mwl',
   'IS': 'mwl',
   'IT': 'mwl',

@@ -18,12 +18,16 @@ each prayer:
 - **Dhuhr** is solar noon.
 - **Asr** is when an object's shadow reaches `factor +` its noon shadow, where
   `factor` is 1 for the standard madhab and 2 for Hanafi.
-- **Maghrib** is always derived from Sunset (Sunset + the method's Maghrib
-  offset, plus an interval for methods that use one).
+- **Maghrib** is Sunset by default. In interval mode its value is minutes after
+  Sunset; in non-interval mode a positive value is an evening solar-depression
+  angle and a non-positive value means Sunset. An unavailable or
+  non-chronological angle falls back to Sunset.
 
 Each method also carries **per-prayer minute offsets** published by its
 authority. In the table these appear in the "Other offsets" column; Maghrib is
-shown relative to Sunset, and Isha as an angle or an interval after Maghrib.
+shown relative to Sunset, and Isha as an angle or an interval after the final
+Maghrib. Method and user offsets are applied once after the astronomical base
+is selected.
 
 Angles are degrees below the horizon. "sunset ± N" and "+N min" are minutes.
 
@@ -86,7 +90,7 @@ Angles are degrees below the horizon. "sunset ± N" and "+N min" are minutes.
 | `windsor` | 15° | sunset | 15° | — |
 | `calgary` | 15° | sunset | 15° | — |
 | `mississauga` | 15° | sunset | 15° | — |
-| `other` | 18° | sunset | 17° | — (blank preset to customise) |
+| `other` (`custom` key) | 18° | sunset | 17° | — (blank preset to customise) |
 
 ¹ `ummAlQura` extends Isha to Maghrib + 120 min during Ramadan when the
 `countryCode` is `SA` and `params.isRamadan` is set.

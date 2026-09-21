@@ -136,10 +136,10 @@ class PrayerTimes {
   /// Afternoon prayer.
   final DateTime? asr;
 
-  /// Sunset (Ghuroub); Maghrib is derived from it.
+  /// Sunset (Ghuroub); the default and interval Maghrib modes derive from it.
   final DateTime? sunset;
 
-  /// Sunset prayer.
+  /// Sunset prayer, optionally calculated from an evening depression angle.
   final DateTime? maghrib;
 
   /// Night prayer.

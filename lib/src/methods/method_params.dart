@@ -3,10 +3,9 @@
 //
 // Column semantics:
 //   [0] Fajr depression angle, degrees.
-//   [1] Maghrib mode flag: 1 = interval (sunset + [2] minutes), 0 = angle
-//       mode (the [2] angle is never used in the final time; Maghrib is
-//       always derived from sunset).
-//   [2] Maghrib parameter (minutes when [1] == 1).
+//   [1] Maghrib mode flag: 1 = interval (sunset + [2] minutes), 0 = angle.
+//   [2] Maghrib parameter: minutes when [1] == 1; otherwise the evening
+//       solar-depression angle in degrees (non-positive means sunset).
 //   [3] Isha mode flag: 1 = interval (Maghrib + [4] minutes), 0 = angle.
 //   [4] Isha parameter (degrees when [3] == 0, minutes when [3] == 1).
 //   [5..10] Baked-in minute offsets: Fajr, Sunrise, Dhuhr, Asr, Maghrib

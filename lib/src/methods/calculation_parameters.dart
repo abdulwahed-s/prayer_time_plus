@@ -24,8 +24,9 @@ class CalculationParameters {
   ///
   /// [ishaValue] is a depression angle in degrees by default; set
   /// [ishaIsInterval] to treat it as minutes after Maghrib. Likewise
-  /// [maghribValue] is minutes after sunset when [maghribIsInterval] is
-  /// true (when false Maghrib is simply sunset plus its minute offset).
+  /// [maghribValue] is minutes after sunset when [maghribIsInterval] is true.
+  /// When false, a positive value is Maghrib's evening solar-depression angle;
+  /// zero or a negative value keeps Maghrib at sunset.
   CalculationParameters({
     required this.fajrAngle,
     required this.ishaValue,
@@ -53,12 +54,12 @@ class CalculationParameters {
 
   /// Whether [maghribValue] is an interval in minutes after sunset.
   ///
-  /// Maghrib is always derived from sunset: sunset plus the Maghrib minute
-  /// offset, plus [maghribValue] minutes when this flag is set. When the
-  /// flag is false, [maghribValue] does not enter the final time.
+  /// When false, a positive [maghribValue] selects angle mode and a
+  /// non-positive value selects sunset mode.
   bool maghribIsInterval;
 
-  /// Minutes after sunset (when [maghribIsInterval] is true).
+  /// Minutes after sunset in interval mode, or the evening solar-depression
+  /// angle in degrees in non-interval mode. A non-positive angle means sunset.
   double maghribValue;
 
   /// Whether [ishaValue] is an interval in minutes after Maghrib.
@@ -131,7 +132,11 @@ class CalculationParameters {
   @override
   String toString() =>
       'CalculationParameters(method: $method, fajrAngle: $fajrAngle, '
-      'maghrib: ${maghribIsInterval ? '+$maghribValue min' : 'sunset'}, '
+      'maghrib: ${maghribIsInterval
+          ? 'sunset +$maghribValue min'
+          : maghribValue > 0
+          ? '$maghribValue deg'
+          : 'sunset'}, '
       'isha: ${ishaIsInterval ? 'maghrib +$ishaValue min' : '$ishaValue deg'}, '
       'madhab: $madhab)';
 }
