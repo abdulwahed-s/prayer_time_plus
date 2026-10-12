@@ -7,9 +7,11 @@
 Islamic prayer times and Sunnah times for Dart and Flutter — computed offline
 from solar geometry, with **zero runtime dependencies**.
 
-> **Also available for [Swift](https://github.com/abdulwahed-s/prayer-time-plus-swift)
-> and [Kotlin / JVM](https://github.com/abdulwahed-s/prayer-time-plus-kotlin).** All three
-> are faithful ports of the same solar engine and compute identical times to the minute.
+> **Also available for [Swift](https://github.com/abdulwahed-s/prayer-time-plus-swift),
+> [Kotlin / JVM](https://github.com/abdulwahed-s/prayer-time-plus-kotlin), and
+> [C# / .NET](https://github.com/abdulwahed-s/prayer-time-plus-csharp).** All four
+> are faithful ports of the same solar engine and match supported prayer-time
+> calculations to the minute for identical inputs.
 > See [Other platforms](#other-platforms).
 
 Give it a location, a date, and a UTC offset, and it returns the five daily
@@ -209,14 +211,15 @@ Prints today's times and the current/next prayer for a sample location.
 
 ## Other platforms
 
-The same solar engine, ported idiomatically to three ecosystems — identical
-results to the minute:
+The same solar engine, ported idiomatically to four ecosystems, with matching
+supported prayer-time calculations to the minute:
 
 | Platform | Package | Repository |
 |---|---|---|
 | **Dart / Flutter** — you are here | [`prayer_time_plus`](https://pub.dev/packages/prayer_time_plus) | [prayer_time_plus](https://github.com/abdulwahed-s/prayer_time_plus) |
 | Swift · iOS, macOS, watchOS, tvOS, Linux | [Swift Package Index](https://swiftpackageindex.com/abdulwahed-s/prayer-time-plus-swift) | [prayer-time-plus-swift](https://github.com/abdulwahed-s/prayer-time-plus-swift) |
 | Kotlin / JVM | [`io.github.abdulwahed-s:prayer-time-plus`](https://central.sonatype.com/artifact/io.github.abdulwahed-s/prayer-time-plus) | [prayer-time-plus-kotlin](https://github.com/abdulwahed-s/prayer-time-plus-kotlin) |
+| C# / .NET | [`PrayerTimePlus`](https://www.nuget.org/packages/PrayerTimePlus) | [prayer-time-plus-csharp](https://github.com/abdulwahed-s/prayer-time-plus-csharp) |
 
 ## License
 
